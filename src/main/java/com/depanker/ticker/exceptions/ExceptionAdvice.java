@@ -15,8 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.springframework.http.HttpStatus.BAD_REQUEST;
-import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
+import static org.springframework.http.HttpStatus.*;
 
 @ControllerAdvice(annotations = RestController.class)
 @Slf4j
@@ -95,6 +94,15 @@ public class ExceptionAdvice {
     ApplicationExceptionResponse invalidSqlException(JSQLParserException e) {
         log.error(e.getMessage(), e);
         return new  ApplicationExceptionResponse("Invalid SQL, provided.");
+    }
+
+
+    @ExceptionHandler(NoContentException.class)
+    @ResponseStatus(NO_CONTENT)
+    @ResponseBody
+    ApplicationExceptionResponse invalidSqlException(NoContentException e) {
+        log.error(e.getMessage(), e);
+        return new  ApplicationExceptionResponse(e.getMessage());
     }
 
 

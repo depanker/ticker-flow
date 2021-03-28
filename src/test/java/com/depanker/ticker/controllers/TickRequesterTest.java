@@ -24,6 +24,14 @@ class TickRequesterTest extends BaseTest {
     }
 
     @Test
+    void getDataWhenRicFileDoesNotExist() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/lookup")
+                .header("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkZXBhbmtlciJ9")
+                .queryParam("query", "select * from ABCD where close_price !=null" +
+                        " order by timestamp desc"))
+                .andExpect(status().isNoContent());
+    }
+    @Test
     void getDataWithBlankQuery() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/lookup")
                 .header("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkZXBhbmtlciJ9")

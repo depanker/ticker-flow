@@ -34,7 +34,7 @@ include::{snippets}/tick-requester-test/get-data/http-response.adoc[]
 include::{snippets}/tick-requester-test/get-data-with-blank-query/curl-request.adoc[]
 ====== Response
 include::{snippets}/tick-requester-test/get-data-with-blank-query/http-response.adoc[]
-====== Request when query field is blank
-include::{snippets}/tick-receiver-controller-test/submit-ticks-with-invalid-field-values/curl-request.adoc[]
+====== Request csv file does not exist
+include::{snippets}/tick-requester-test/get-data-when-ric-file-does-not-exist/curl-request.adoc[]
 ====== Response
-include::{snippets}/tick-receiver-controller-test/submit-ticks-with-invalid-field-values/http-response.adoc[]
+include::{snippets}/tick-requester-test/get-data-when-ric-file-does-not-exist/http-response.adoc[]

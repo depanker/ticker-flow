@@ -1,6 +1,7 @@
 package com.depanker.ticker.repos;
 
 import com.depanker.ticker.beans.*;
+import com.depanker.ticker.exceptions.NoContentException;
 import com.depanker.ticker.helper.DecimalComparator;
 import com.depanker.ticker.helper.LongComparator;
 import com.depanker.ticker.helper.StringComparator;
@@ -14,6 +15,7 @@ import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.Reader;
 import java.util.*;
@@ -47,6 +49,8 @@ public class TickReader {
                     tickers.add(ticker);
                 }
             }
+        } catch (FileNotFoundException e) {
+            throw new NoContentException(String.format("No data found for %s", csvFileName));
         }
         if (!tickers.isEmpty() && !columns.getColumn().isEmpty()) {
             tickers =  tickers.stream().map(ticker -> removeUnRequiredFiled(columns.getColumn(), ticker))
