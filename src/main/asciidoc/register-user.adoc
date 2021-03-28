@@ -1,0 +1,13 @@
+[[register-user]]
+== Register user
+This is a dummy API of registering the username along with password
+====== Request
+include::{snippets}/register-user-controller-test/register-user/curl-request.adoc[]
+====== Response
+include::{snippets}/register-user-controller-test/register-user/http-response.adoc[]
+
+==== Error
+====== Request when required fields are missing
+include::{snippets}/register-user-controller-test/register-invalid-user/curl-request.adoc[]
+====== Response
+include::{snippets}/register-user-controller-test/register-invalid-user/http-response.adoc[]

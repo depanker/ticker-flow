@@ -21,6 +21,7 @@ import java.util.Collections;
 @Slf4j
 public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
 
+    private String secret;
     /**
      * configured by Web Security Config
      *
@@ -83,5 +84,13 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
         String url = req.getRequestURL().toString();
         TokenAuthenticationService
                 .addAuthentication(req, res, auth.getName(), url);
+    }
+
+    public String getSecret() {
+        return secret;
+    }
+
+    public void setSecret(String secret) {
+        this.secret = secret;
     }
 }

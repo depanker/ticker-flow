@@ -1,0 +1,41 @@
+[[token-fetching]]
+== Token fetching
+This api will fetch JWT token for the registered user
+====== Request
+[source,bash]
+----
+$ curl 'http://localhost:8080/token' -i -X POST \
+    -H 'Content-Type: application/json' \
+    -d '{
+  "username" : "depanker",
+  "password" : "depanker"
+}'
+----
+====== Response
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 51
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkZXBhbmtlciJ9.L3A9pzvMXgpOgktubpFO6RzHOw-CTDb-PDna019UFG9sFvwoBn5Pm9zNUza6vIgiCZWHsIZcyspr_jKT0rPnHw
+
+----
+
+==== Error
+====== Request when user is not registered or credentials are in-correct
+[source,bash]
+----
+$ curl 'http://localhost:8080/register-user' -i -X POST \
+    -H 'Content-Type: application/json' \
+    -d '{
+  "username" : "abc",
+  "password" : "123"
+}'
+----
+====== Response
+[source,http,options="nowrap"]
+----
+HTTP/1.1 403 Bad Request
+Content-Type: application/json
+
+----

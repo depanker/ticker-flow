@@ -1,5 +1,6 @@
 package com.depanker.ticker.beans;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.AllArgsConstructor;
@@ -15,6 +16,7 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @ToString
 @JsonPropertyOrder(value = { "timestamp", "price",  "closePrice", "currency", "ric"})
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Ticker {
     @NotNull(message = "Timestamp cannot be null")
     @JsonProperty("TIMESTAMP")

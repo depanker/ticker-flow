@@ -1,0 +1,97 @@
+= RESTful Notes API Guide
+Depanker Sharma
+:doctype: book
+:compat-mode:
+:page-layout!:
+:toc: right
+:toclevels: 2
+:sectanchors:
+:sectlinks:
+:sectnums:
+:linkattrs:
+:source-highlighter: coderay
+
+
+[[overview]]
+= Overview
+__These are the API's for importing financial data and outputing
+the report accordingly. __
+
+[[overview-general]]
+== General
+
+[[overview-http-verbs]]
+=== HTTP verbs
+
+|===
+| Verb | Usage
+
+| `GET`
+| Used to retrieve a resource (idempotent)
+
+| `POST`
+| Used to create a new resource
+
+| `PUT`
+| Used to update an existing resource (idempotent)
+
+| `DELETE`
+| Used to delete an existing resource
+|===
+
+[[overview-http-status-codes]]
+== HTTP status codes
+
+RESTful notes tries to adhere as closely as possible to standard HTTP and REST conventions in its
+use of HTTP status codes.
+
+|===
+| Status code | Usage
+
+| `200 OK`
+| The request completed successfully
+
+| `202 Accepted`
+| The request has been accepted for processing, but the processing has not been completed. The request might or might not be eventually acted upon, and may be disallowed when processing occurs.
+
+| `204 No Content`
+| An update to an existing resource has been applied successfully
+
+| `400 Bad Request`
+| The request was malformed. The response body will include an error providing further information
+
+| `404 Not Found`
+| The requested resource did not exist
+
+| `409 Not Found`
+| Attempt to create a duplicate resource
+
+| `500 Internal server error`
+| Any Unhandled
+
+
+---
+|===
+[[resources]]
+= Resources
+include::submit-ricks.adoc[]
+include::lookup-service.adoc[]
+include::register-user.adoc[]
+include::token-fetching.adoc[]
+
+[[how_to_run]]
+= How to run the software
+To run the software, use the terminal, `cd` to `ticker-flow`
+type `./mvnw clean  build`. After the process gets successfully competed
+a jar `ticker-flow-0.0.1-SNAPSHOT.jar` will get created under target/ directory
+Now there are two ways to run the jar
+
+====== 1. Execute `java -jar target/ticker-flow-0.0.1-SNAPSHOT.jar`. Once the jar is up, below mentioned curl request's could be used as test cases.
+====== 2. Alternatively if docker is installed on the system following command can start the application as Docker container
+2.1 Build the docker image `docker build -t depanker/demo-ticker-flow .` or pull the image from dockerhub using `docker pull depanker/demo-ticker-flow`
+
+2.2 Once the above command has been successfully installed, execute the following `docker run -p 8080:8080 -t depanker/demo-ticker-flow`
+
+
+
+:last-update-label!:

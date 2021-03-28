@@ -1,0 +1,40 @@
+[[lookup-ticks]]
+== Lookup-Ticks
+=== About API
+###  This API expects a SQL query to lookup the data form exported csv. As mentioned in the requirements NO DATABASE is being used.
+SQL syntax supports selecting all columns using
+
+`SELECT *` or specific columns which can have following values `TIMESTAMP,PRICE,CLOSE_PRICE,CURRENCY,RIC`.
+
+`FROM` needs to  be value or RIC in exported CSV example "AAPL.OQ".
+
+`WHERE` clause only support's AND operator for now.
+
+`ORDER BY` clause  is supported with multiple columns.
+
+
+A Sample query could be
+
+`select PRICE,  CLOSE_PRICE from AAPL.OQ where   PRICE > 4 order by timestamp asc, price desc`
+
+For columns containing numerical values following operators are valid.
+`'=', '<', '<=', '>', '>=', '!='`
+
+For columns containing string values following operators are valid
+`'=', '!='`
+
+
+====== Request
+include::{snippets}/tick-requester-test/get-data/curl-request.adoc[]
+====== Response
+include::{snippets}/tick-requester-test/get-data/http-response.adoc[]
+
+==== Error
+====== Request when query field is blank
+include::{snippets}/tick-requester-test/get-data-with-blank-query/curl-request.adoc[]
+====== Response
+include::{snippets}/tick-requester-test/get-data-with-blank-query/http-response.adoc[]
+====== Request when query field is blank
+include::{snippets}/tick-receiver-controller-test/submit-ticks-with-invalid-field-values/curl-request.adoc[]
+====== Response
+include::{snippets}/tick-receiver-controller-test/submit-ticks-with-invalid-field-values/http-response.adoc[]

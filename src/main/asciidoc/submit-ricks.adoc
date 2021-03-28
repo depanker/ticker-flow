@@ -1,0 +1,21 @@
+[[submit-ticks]]
+== Submit-Ticks
+This api accepts the tiks and puts them into a quere
+which is then consumed by a consumer.
+In case of application shutdown, an attempt is made to save the data in queue
+onto a file which is checked by the application on startup and loaded  if found.
+
+====== Request
+include::{snippets}/tick-receiver-controller-test/submit-ticks/curl-request.adoc[]
+====== Response
+include::{snippets}/tick-receiver-controller-test/submit-ticks/http-response.adoc[]
+
+==== Error
+====== Malformed request
+include::{snippets}/tick-receiver-controller-test/submit-ticks-with-invalid-input/curl-request.adoc[]
+====== Response
+include::{snippets}/tick-receiver-controller-test/submit-ticks-with-invalid-input/http-response.adoc[]
+====== Request when required fields are missing
+include::{snippets}/tick-receiver-controller-test/submit-ticks-with-invalid-field-values/curl-request.adoc[]
+====== Response
+include::{snippets}/tick-receiver-controller-test/submit-ticks-with-invalid-field-values/http-response.adoc[]
