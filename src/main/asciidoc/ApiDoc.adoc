@@ -82,15 +82,15 @@ include::token-fetching.adoc[]
 [[how_to_run]]
 = How to run the software
 To run the software, use the terminal, `cd` to `ticker-flow`
-type `./mvnw clean  build`. After the process gets successfully competed
+type `./mvnw clean  install`. After the process gets successfully competed
 a jar `ticker-flow-0.0.1-SNAPSHOT.jar` will get created under target/ directory
 Now there are two ways to run the jar
 
 ====== 1. Execute `java -jar target/ticker-flow-0.0.1-SNAPSHOT.jar`. Once the jar is up, below mentioned curl request's could be used as test cases.
 ====== 2. Alternatively if docker is installed on the system following command can start the application as Docker container
-2.1 Build the docker image `docker build -t depanker/demo-ticker-flow .` or pull the image from dockerhub using `docker pull depanker/demo-ticker-flow`
+2.1 Build the docker image `docker build -t depanker/ticker-flow .` or pull the image from dockerhub using `docker pull depanker/ticker-flow`
 
-2.2 Once the above command has been successfully installed, execute the following `docker run -p 8080:8080 -t depanker/demo-ticker-flow`
+2.2 Once the above command has been successfully installed, execute the following `docker run -p 8080:8080 -t depanker/ticker-flow`
 
 
 

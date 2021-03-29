@@ -1,6 +1,7 @@
 [[token-fetching]]
 == Token fetching
 This api will fetch JWT token for the registered user
+
 ====== Request
 [source,bash]
 ----
