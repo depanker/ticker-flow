@@ -35,7 +35,7 @@ class TickReceiverControllerTest extends BaseTest {
     @Test
     void submitTicksWithInvalidFieldValues() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.post("/submit-tick")
-                .header("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkZXBhbmtlciJ9")
+                .header("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkZXBhbmtlciJ9.L3A9pzvMXgpOgktubpFO6RzHOw-CTDb-PDna019UFG9sFvwoBn5Pm9zNUza6vIgiCZWHsIZcyspr_jKT0rPnHw")
                 .content(getMockTickWithMissingRequiredFields()))
                 .andExpect(status().isBadRequest());
 
