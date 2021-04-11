@@ -22,7 +22,7 @@ public class TickSbmitTest {
                                 .post(getMockTick(), MimeTypes.Type.APPLICATION_JSON)
                 )
         ).run();
-        assertThat(stats.overall().elapsedTimePercentile90()).isLessThan(Duration.ofMillis(55));
+        assertThat(stats.overall().elapsedTimePercentile90()).isLessThan(Duration.ofMillis(60));
     }
 
 

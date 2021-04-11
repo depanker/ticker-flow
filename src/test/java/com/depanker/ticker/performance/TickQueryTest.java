@@ -23,6 +23,6 @@ public class TickQueryTest {
                 //this is just to log details of each request stats
 //                jtlWriter("test-query.csv")
         ).run();
-        assertThat(stats.overall().elapsedTimePercentile90()).isLessThan(Duration.ofMillis(55));
+        assertThat(stats.overall().elapsedTimePercentile90()).isLessThan(Duration.ofMillis(70));
     }
 }
