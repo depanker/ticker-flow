@@ -16,13 +16,14 @@ public class TickSbmitTest {
     public void testPerformance() throws IOException {
         //this is just to log details of each request stats
         TestPlanStats stats = testPlan(
-                threadGroup(10, 10,
+                threadGroup(10, 3,
                         httpSampler("http://localhost:8080/submit-tick")
                                 .header("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkZXBhbmtlciJ9.L3A9pzvMXgpOgktubpFO6RzHOw-CTDb-PDna019UFG9sFvwoBn5Pm9zNUza6vIgiCZWHsIZcyspr_jKT0rPnHw")
                                 .post(getMockTick(), MimeTypes.Type.APPLICATION_JSON)
                 )
         ).run();
-        assertThat(stats.overall().elapsedTimePercentile90()).isLessThan(Duration.ofMillis(60));
+        assertThat(stats.overall().errorsCount()).isEqualTo(0l);
+        assertThat(stats.overall().elapsedTimePercentile90()).isLessThan(Duration.ofMillis(100));
     }
 
 

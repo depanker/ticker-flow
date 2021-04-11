@@ -15,7 +15,7 @@ public class TickQueryTest {
     public void testPerformance() throws IOException {
         //this is just to log details of each request stats
         TestPlanStats stats = testPlan(
-                threadGroup(4, 10,
+                threadGroup(10, 3,
                         httpSampler("http://localhost:8080/lookup?query=select * from AAPL.OQ where CLOSE_PRICE != null")
                                 .header("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhYmMifQ.zqQixZbzz1sQH_GuspsNb0GozyrCFJ5qO2wSm4sY_w1z9WAmRy47XtMdU2DMrs8ucVnLFvFxvHGwblnNHdFSOw")
 
@@ -23,6 +23,7 @@ public class TickQueryTest {
                 //this is just to log details of each request stats
 //                jtlWriter("test-query.csv")
         ).run();
-        assertThat(stats.overall().elapsedTimePercentile90()).isLessThan(Duration.ofMillis(70));
+        assertThat(stats.overall().errorsCount()).isEqualTo(0l);
+        assertThat(stats.overall().elapsedTimePercentile90()).isLessThan(Duration.ofMillis(100));
     }
 }
